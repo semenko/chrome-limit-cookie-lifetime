@@ -1,0 +1,19 @@
+{
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+	"persistent": false
+    },
+    "author": "Nick Semenkovich",
+    "content_security_policy": "script-src 'self'; object-src 'self'",
+    "description": "Set a maximum limit on cookie lifetime. By Nick Semenkovich <semenko@alum.mit.edu>",
+    "manifest_version": 2,
+    "name": "Limit Cookie Lifetime",
+    "permissions": [
+    	"alarms",
+        "cookies",
+        "*://*/*"
+    ],
+    "version": "2014.2.12"
+}
