@@ -1,7 +1,7 @@
 /*
-Author: Nick Semenkovich <semenko@alum.mit.edu>
-License: MIT
-*/
+ Author: Nick Semenkovich <semenko@alum.mit.edu>
+ License: MIT
+ */
 
 "use strict";
 
