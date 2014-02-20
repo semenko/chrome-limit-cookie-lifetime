@@ -7,15 +7,16 @@ Author: Nick Semenkovich <semenko@alum.mit.edu>
 License: MIT
 */
 
-
-// Maximum cookie lifespan
-var maxCookieLifeInDays = 4;
-
-
-var maxCookieLifeInSeconds = maxCookieLifeInDays * 24 * 60 * 60;
+"use strict";
 
 function scanCookies() {
+    // Grab the cookie preference, or default to 7 days.
+    var maxCookieLifeInDays = JSON.parse(localStorage.cookieLimit || 7);
+
+    var maxCookieLifeInSeconds = maxCookieLifeInDays * 24 * 60 * 60;
+
     var maxTime = (Date.now() / 1000) + maxCookieLifeInSeconds;
+
     var newCookie;
     // I've never seen a non-zero cookieStoreID, but it's what the API defines.
     chrome.cookies.getAllCookieStores(function(cookieStores) {
@@ -32,7 +33,7 @@ function scanCookies() {
 				// console.log(allCookies[j]);
 
 				// Define a new cookie object, which will overwrite the existing cookie.
-				// Unfortunately, there's no simple chrome.cookies.update() 
+				// Unfortunately, there's no simple chrome.cookies.update()
 				var newCookie = {name:allCookies[j].name, value:allCookies[j].value,
 						 path:allCookies[j].path, secure:allCookies[j].secure,
 						 httpOnly:allCookies[j].httpOnly,
@@ -59,7 +60,7 @@ function scanCookies() {
 		    });
 	    }
 	});
-};
+}
 
 
 // Called on first run/update
@@ -69,7 +70,7 @@ function setup() {
 
     // And let's run once right now!
     scanCookies();
-};
+}
 
 // Set some onInstalled listeners to fire, since we're not a persistent background page.
 chrome.runtime.onInstalled.addListener(setup);
