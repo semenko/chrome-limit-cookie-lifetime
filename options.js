@@ -22,6 +22,9 @@ select.selectedIndex = cookieLimit - 1;  // Zero indexed.
 function updateLimit() {
     var newLimit = select.selectedIndex + 1; // Zero indexed.
     localStorage.cookieLimit = newLimit;
+    var statusBar = document.getElementById("statusBar");
+    statusBar.innerHTML = 'Saved.';
+    setTimeout(function(){ statusBar.innerHTML = '&nbsp;'; }, 1000);
 }
 
 select.addEventListener('change', function() { updateLimit(); }, false);
