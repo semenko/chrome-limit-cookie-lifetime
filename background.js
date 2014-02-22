@@ -17,7 +17,6 @@ function scanCookies() {
 
     var maxTime = (Date.now() / 1000) + maxCookieLifeInSeconds;
 
-    var newCookie;
     // I've never seen a non-zero cookieStoreID, but it's what the API defines.
     chrome.cookies.getAllCookieStores(function(cookieStores) {
         for (var i = 0; i < cookieStores.length; i++) {
@@ -65,8 +64,8 @@ function scanCookies() {
 
 // Called on first run/update
 function setup() {
-    // Run every three hours
-    chrome.alarms.create("scanCookies", { periodInMinutes: 180 });
+    // Run every two hours
+    chrome.alarms.create("scanCookies", { periodInMinutes: 120 });
 
     // And let's run once right now!
     scanCookies();
