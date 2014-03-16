@@ -10,8 +10,8 @@
 "use strict";
 
 function scanCookies() {
-    // Grab the cookie preference, or default to 7 days.
-    var maxCookieLifeInDays = JSON.parse(localStorage.cookieLimit || 7);
+    // Grab the cookie preference, or default to 10 days.
+    var maxCookieLifeInDays = JSON.parse(localStorage.cookieLimit || 10);
 
     var maxCookieLifeInSeconds = maxCookieLifeInDays * 24 * 60 * 60;
 

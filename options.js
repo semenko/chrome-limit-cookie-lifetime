@@ -13,8 +13,8 @@ for (var i=1; i<=60; i++){
     select.options[select.options.length] = new Option(i);
 }
 
-// Default to 7 if LSO isn't set
-var cookieLimit = JSON.parse(localStorage.cookieLimit || 7);
+// Default to 10 if LSO isn't set
+var cookieLimit = JSON.parse(localStorage.cookieLimit || 10);
 select.selectedIndex = cookieLimit - 1;  // Zero indexed.
 
 
