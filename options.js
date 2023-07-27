@@ -5,25 +5,21 @@
 
 "use strict";
 
+const DEFAULT_DAYS = 21;
 
-var select = document.getElementById("selectCookieLimit");
-
-// Add days 1-60
-for (var i=1; i<=60; i++){
-    select.options[select.options.length] = new Option(i);
-}
+var input = document.getElementById("selectCookieLimit");
 
 // Default to 21 if LSO isn't set
-var cookieLimit = JSON.parse(localStorage.cookieLimit || 21);
-select.selectedIndex = cookieLimit - 1;  // Zero indexed.
+var cookieLimit = JSON.parse(localStorage.cookieLimit || DEFAULT_DAYS);
 
+input.value = cookieLimit;
 
-// Called when the select is changed by the user.
+// Called when the input is changed by the user.
 function updateLimit() {
-    localStorage.cookieLimit = select.selectedIndex + 1; // Zero indexed.
+    localStorage.cookieLimit = (Number(input.value) || DEFAULT_DAYS) + 1; // Zero indexed.
     var statusBar = document.getElementById("statusBar");
     statusBar.innerHTML = 'Saved.';
-    setTimeout(function(){ statusBar.innerHTML = '&nbsp;'; }, 1000);
+    setTimeout(function(){ statusBar.innerHTML = '&nbsp;'; }, 2000);
 }
 
-select.addEventListener('change', function() { updateLimit(); }, false);
+input.addEventListener('change', function() { updateLimit(); }, false);
